@@ -1,5 +1,6 @@
 package com.fst.asustech.entity.g.stock;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -21,7 +22,9 @@ import lombok.RequiredArgsConstructor;
 @Data
 @NoArgsConstructor
 @RequiredArgsConstructor
-public class ProduitsApprovisionnement {
+public class ProduitsApprovisionnement implements Serializable{
+
+	private static final long serialVersionUID = -2076610635317007311L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

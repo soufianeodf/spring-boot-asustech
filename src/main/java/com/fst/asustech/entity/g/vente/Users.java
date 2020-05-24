@@ -1,5 +1,7 @@
 package com.fst.asustech.entity.g.vente;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -17,7 +19,9 @@ import lombok.RequiredArgsConstructor;
 @Data
 @NoArgsConstructor
 @RequiredArgsConstructor
-public class Users {
+public class Users implements Serializable{
+
+	private static final long serialVersionUID = -6979903632730892267L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
