@@ -8,11 +8,11 @@ public class AuthenticationController {
 
 	@GetMapping("/login")
 	public String listProduits() {
-		return "authentication/login";
+		return "dashboard/authentication/login";
 	}
 
 	@GetMapping("/access-denied")
 	public String accessDenied() {
-		return "error/error-403";
+		return "dashboard/error/error-403";
 	}
 }
