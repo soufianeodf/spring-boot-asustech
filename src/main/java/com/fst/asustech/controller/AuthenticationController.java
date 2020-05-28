@@ -8,7 +8,7 @@ public class AuthenticationController {
 
 	@GetMapping("/login")
 	public String listProduits() {
-		return "pages/login";
+		return "authentication/login";
 	}
 
 	@GetMapping("/access-denied")
