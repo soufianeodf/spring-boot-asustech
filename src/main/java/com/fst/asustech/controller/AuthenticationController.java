@@ -11,4 +11,8 @@ public class AuthenticationController {
 		return "pages/login";
 	}
 
+	@GetMapping("/access-denied")
+	public String accessDenied() {
+		return "error/error-403";
+	}
 }
