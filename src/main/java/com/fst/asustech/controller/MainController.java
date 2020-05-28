@@ -39,8 +39,13 @@ public class MainController {
 	private CrudService<ProduitsApprovisionnement> produitsApprovisionnementService;
 
 	@GetMapping("/")
+	public String homePage(Model theModel) {
+		return "dashboard/index";
+	}
+
+	@GetMapping("/listProduits")
 	public String listProduits(Model theModel) {
 		theModel.addAttribute("produits", produitsPrixService.findAll());
-		return "dashboard/index";
+		return "dashboard/pages/data-tables";
 	}
 }
