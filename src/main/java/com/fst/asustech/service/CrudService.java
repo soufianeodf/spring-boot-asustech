@@ -6,9 +6,9 @@ public interface CrudService<Entity> {
 
 	List<Entity> findAll();
 	
-	Entity findById(Long id);
+	Entity findById(Integer id);
 	
 	void save(Entity e);
 	
-	void deleteById(Long id);
+	void deleteById(Integer id);
 }

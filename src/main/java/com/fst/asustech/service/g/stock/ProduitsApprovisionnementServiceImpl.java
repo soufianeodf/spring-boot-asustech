@@ -1,13 +1,13 @@
 package com.fst.asustech.service.g.stock;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
-import com.fst.asustech.dao.CrudDAO;
+import com.fst.asustech.dao.g.stock.ProduitsApprovisionnementRepository;
 import com.fst.asustech.entity.g.stock.ProduitsApprovisionnement;
 import com.fst.asustech.service.CrudService;
 
@@ -15,31 +15,34 @@ import com.fst.asustech.service.CrudService;
 public class ProduitsApprovisionnementServiceImpl implements CrudService<ProduitsApprovisionnement> {
 
 	@Autowired
-	@Qualifier("produitsApprovisionnementDAOImpl")
-	private CrudDAO<ProduitsApprovisionnement> crudDAO;
-	
+	@Qualifier("produitsApprovisionnementRepository")
+	private ProduitsApprovisionnementRepository produitsApprovisionnementRepository;
+
 	@Override
-	@Transactional
 	public List<ProduitsApprovisionnement> findAll() {
-		return crudDAO.findAll();
+		return produitsApprovisionnementRepository.findAll();
 	}
 
 	@Override
-	@Transactional
-	public ProduitsApprovisionnement findById(Long id) {
-		return crudDAO.findById(id);
+	public ProduitsApprovisionnement findById(Integer id) {
+		Optional<ProduitsApprovisionnement> result = produitsApprovisionnementRepository.findById(id);
+		ProduitsApprovisionnement produitsApprovisionnement = null;
+		if (result.isPresent()) {
+			produitsApprovisionnement = result.get();
+		} else {
+			throw new RuntimeException("Did not find produitsApprovisionnement");
+		}
+		return produitsApprovisionnement;
 	}
 
 	@Override
-	@Transactional
 	public void save(ProduitsApprovisionnement e) {
-		crudDAO.save(e);
+		produitsApprovisionnementRepository.save(e);
 	}
 
 	@Override
-	@Transactional
-	public void deleteById(Long id) {
-		crudDAO.deleteById(id);
+	public void deleteById(Integer id) {
+		produitsApprovisionnementRepository.deleteById(id);
 	}
-		
+
 }

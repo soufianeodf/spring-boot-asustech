@@ -1,46 +1,48 @@
 package com.fst.asustech.service.g.stock;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
-import com.fst.asustech.dao.CrudDAO;
+import com.fst.asustech.dao.g.stock.ProduitsStockRepository;
 import com.fst.asustech.entity.g.stock.ProduitsStock;
 import com.fst.asustech.service.CrudService;
-
 
 @Service
 public class ProduitsStockServiceImpl implements CrudService<ProduitsStock> {
 
 	@Autowired
-	@Qualifier("produitsStockDAOImpl")
-	private CrudDAO<ProduitsStock> crudDAO;
-	
+	@Qualifier("produitsStockRepository")
+	private ProduitsStockRepository produitsStockRepository;
+
 	@Override
-	@Transactional
 	public List<ProduitsStock> findAll() {
-		return crudDAO.findAll();
+		return produitsStockRepository.findAll();
 	}
 
 	@Override
-	@Transactional
-	public ProduitsStock findById(Long id) {
-		return crudDAO.findById(id);
+	public ProduitsStock findById(Integer id) {
+		Optional<ProduitsStock> result = produitsStockRepository.findById(id);
+		ProduitsStock produitsStock = null;
+		if (result.isPresent()) {
+			produitsStock = result.get();
+		} else {
+			throw new RuntimeException("Did not find produitsStock");
+		}
+		return produitsStock;
 	}
 
 	@Override
-	@Transactional
 	public void save(ProduitsStock e) {
-		crudDAO.save(e);
+		produitsStockRepository.save(e);
 	}
 
 	@Override
-	@Transactional
-	public void deleteById(Long id) {
-		crudDAO.deleteById(id);
+	public void deleteById(Integer id) {
+		produitsStockRepository.deleteById(id);
 	}
 
 }

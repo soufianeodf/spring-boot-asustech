@@ -1,13 +1,13 @@
 package com.fst.asustech.service.g.vente;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
-import com.fst.asustech.dao.CrudDAO;
+import com.fst.asustech.dao.g.vente.UsersRepository;
 import com.fst.asustech.entity.g.vente.Users;
 import com.fst.asustech.service.CrudService;
 
@@ -15,31 +15,34 @@ import com.fst.asustech.service.CrudService;
 public class UsersServiceImpl implements CrudService<Users> {
 
 	@Autowired
-	@Qualifier("usersDAOImpl")
-	private CrudDAO<Users> crudDAO;
-	
+	@Qualifier("usersRepository")
+	private UsersRepository usersRepository;
+
 	@Override
-	@Transactional
 	public List<Users> findAll() {
-		return crudDAO.findAll();
+		return usersRepository.findAll();
 	}
 
 	@Override
-	@Transactional
-	public Users findById(Long id) {
-		return crudDAO.findById(id);
+	public Users findById(Integer id) {
+		Optional<Users> result = usersRepository.findById(id);
+		Users users = null;
+		if (result.isPresent()) {
+			users = result.get();
+		} else {
+			throw new RuntimeException("Did not find users");
+		}
+		return users;
 	}
 
 	@Override
-	@Transactional
 	public void save(Users e) {
-		crudDAO.save(e);
+		usersRepository.save(e);
 	}
 
 	@Override
-	@Transactional
-	public void deleteById(Long id) {
-		crudDAO.deleteById(id);
+	public void deleteById(Integer id) {
+		usersRepository.deleteById(id);
 	}
 
 }
