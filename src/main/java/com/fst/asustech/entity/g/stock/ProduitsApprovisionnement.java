@@ -34,7 +34,7 @@ public class ProduitsApprovisionnement implements Serializable{
 	@Column(name="qte_commande")
 	private @NonNull Integer qteCommande;
 	
-	@Column(name="date_livraison")
+	@Column(name="date_prevue_livraison")
 	@Temporal(TemporalType.DATE)
-	private @NonNull Date dateLivraison;
+	private @NonNull Date datePrevueLivraison;
 }
