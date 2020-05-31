@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
  
 <head>
     <!-- Required meta tags -->
@@ -37,14 +37,11 @@
             <div class="card-header text-center"><a href="../index.html"><img class="logo-img" src="../assets/images/logo.png" alt="logo"></a><span class="splash-description">Please enter your user information.</span></div>
             <div class="card-body">
             
-                <form
-                	action="#"
-                	th:action="@{/authenticateTheUser}"
-                	method="POST">
+                <form action="/authenticateTheUser" method="POST">
                 	
                 	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 					
-					<div th:if="${param.error != null}">
+<!-- 					<div th:if="${param.error != null}">
 						<div class="alert alert-danger" role="alert">
 							Invalid username and password.
 						</div>
@@ -54,7 +51,7 @@
 						<div class="alert alert-success" role="alert">
 							You have been logged out.
 						</div>
-					</div>
+					</div> -->
 
 					<div class="form-group">
                         <input class="form-control form-control-lg" name="username" id="username" type="text" placeholder="Username" autocomplete="off">
