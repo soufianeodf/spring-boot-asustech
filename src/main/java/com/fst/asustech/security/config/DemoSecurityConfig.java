@@ -22,19 +22,12 @@ public class DemoSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests()
-			.antMatchers("/assets/vendor/bootstrap/css/bootstrap.min.css",
-						 "/assets/vendor/fonts/circular-std/style.css",
-						 "/assets/libs/css/style.css",
-						 "/assets/vendor/fonts/fontawesome/css/fontawesome-all.css",
-						 "/assets/vendor/jquery/jquery-3.3.1.min.js",
-						 "/assets/vendor/bootstrap/js/bootstrap.bundle.js",
-						 "/assets/vendor/slimscroll/jquery.slimscroll.js",
-						 "/assets/libs/js/main-js.js",
-						 "/assets/images/logo.png")
+			.antMatchers("/assets/**")
 			.permitAll()
 			.antMatchers("/**").hasRole("ADMIN")
 			.and().formLogin().loginPage("/login")
 			.loginProcessingUrl("/authenticateTheUser").permitAll()
+			.defaultSuccessUrl("/", true)
 			.and().logout().permitAll()
 			.and().exceptionHandling().accessDeniedPage("/access-denied");
 	}
