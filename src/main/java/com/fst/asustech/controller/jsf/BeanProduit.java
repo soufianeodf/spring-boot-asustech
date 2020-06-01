@@ -38,8 +38,8 @@ public class BeanProduit {
 	
 	public List<ProduitsStock> getListProductsFinal() {
 		
-		List<ProduitsPrix> produitsVente = produitsPrixService.findAll();
-		List<ProduitsStock> produits = produitsStockService.findAll();
+		List<ProduitsPrix> produitsVente = getListProduitsPrix();
+		List<ProduitsStock> produits = getListProduitsStock();
 		
 		for (int i = 0; i < produits.size(); i++) {
 			produits.get(i).setNomPdt(produitsVente.get(i).getNomPdt());
