@@ -1,5 +1,6 @@
 package com.fst.asustech.controller.jsf;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
@@ -28,12 +29,26 @@ public class BeanProduit {
 	@Qualifier("produitsStockServiceImpl")
 	private CrudService<ProduitsStock> produitsStockService;
 	
+	private List<ProduitsStock> produits;
+	
+	public BeanProduit() {
+		produits = new ArrayList<ProduitsStock>();
+	}
+	
+	public List<ProduitsStock> getProduits() {
+		return produits;
+	}
+
 	public List<ProduitsPrix> getListProduitsPrix() {
 		return produitsPrixService.findAll();
 	}
 	
 	public List<ProduitsStock> getListProduitsStock() {
 		return produitsStockService.findAll();
+	}
+	
+	public void loadProducts() {
+		produits = getListProductsFinal();
 	}
 	
 	public List<ProduitsStock> getListProductsFinal() {

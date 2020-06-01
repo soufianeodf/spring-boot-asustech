@@ -5,6 +5,11 @@
     xmlns:f="http://java.sun.com/jsf/core"
 		xmlns:p="http://primefaces.org/ui"
 		xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+<f:metadata>
+	<f:event type="preRenderView" listener="#{beanProduit.loadProducts()}"/>
+</f:metadata>
+
 <h:head>
 <!-- Required meta tags -->
 
@@ -648,7 +653,7 @@
 							<div class="card-body">
 								<div class="table-responsive">
 
-									<p:dataTable var="produit" value="#{beanProduit.getListProductsFinal()}">
+									<p:dataTable var="produit" value="#{beanProduit.produits}">
 
 											<p:column headerText="Product Code">
 													<h:outputText value="#{produit.codePdt}" />
@@ -712,7 +717,7 @@
 											</tr>
 										</thead>
 										<tbody>
-											<ui:repeat value="#{beanProduit.getListProductsFinal()}" var="produit">
+											<ui:repeat value="#{beanProduit.produits}" var="produit">
 												<tr>
 													<td>#{produit.codePdt}</td>
 													<td>#{produit.nomPdt}</td>
