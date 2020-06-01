@@ -1,4 +1,4 @@
-package com.fst.asustech.controller;
+package com.fst.asustech.controller.springmvc;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -45,7 +45,6 @@ public class MainController {
 
 	@GetMapping("/listProduits")
 	public String listProduits(Model theModel) {
-		theModel.addAttribute("produits", produitsPrixService.findAll());
-		return "/ecommerce-product.xhtml";
+		return "/pages/data-tables.xhtml";
 	}
 }

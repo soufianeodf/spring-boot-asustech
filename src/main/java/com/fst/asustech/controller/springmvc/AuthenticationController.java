@@ -1,4 +1,4 @@
-package com.fst.asustech.controller;
+package com.fst.asustech.controller.springmvc;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
