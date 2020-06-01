@@ -3,6 +3,7 @@ package com.fst.asustech.controller.jsf;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
@@ -23,18 +24,23 @@ public class BeanProduit {
 	@Autowired
 	@Qualifier("produitsPrixServiceImpl")
 	private CrudService<ProduitsPrix> produitsPrixService;
-	
+
 	// stock
 	@Autowired
 	@Qualifier("produitsStockServiceImpl")
 	private CrudService<ProduitsStock> produitsStockService;
-	
+
 	private List<ProduitsStock> produits;
-	
+
 	public BeanProduit() {
 		produits = new ArrayList<ProduitsStock>();
 	}
-	
+
+	@PostConstruct
+	public void init() {
+		produits = getListProductsFinal();
+	}
+
 	public List<ProduitsStock> getProduits() {
 		return produits;
 	}
@@ -42,25 +48,21 @@ public class BeanProduit {
 	public List<ProduitsPrix> getListProduitsPrix() {
 		return produitsPrixService.findAll();
 	}
-	
+
 	public List<ProduitsStock> getListProduitsStock() {
 		return produitsStockService.findAll();
 	}
-	
-	public void loadProducts() {
-		produits = getListProductsFinal();
-	}
-	
+
 	public List<ProduitsStock> getListProductsFinal() {
-		
+
 		List<ProduitsPrix> produitsVente = getListProduitsPrix();
 		List<ProduitsStock> produits = getListProduitsStock();
-		
+
 		for (int i = 0; i < produits.size(); i++) {
 			produits.get(i).setNomPdt(produitsVente.get(i).getNomPdt());
 			produits.get(i).setPrixPdt(produitsVente.get(i).getPrixPdt());
 		}
-		
+
 		return produits;
 	}
 }
