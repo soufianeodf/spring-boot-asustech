@@ -47,4 +47,9 @@ public class MainController {
 		return "pages/data-tables.xhtml";
 	}
 
+	@GetMapping("/formValidation")
+	public String formValidation() {
+		return "pages/form-validation.xhtml";
+	}
+
 }
