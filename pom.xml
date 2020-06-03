@@ -12,6 +12,7 @@
 	<groupId>com.fst</groupId>
 	<artifactId>asustech</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+	<packaging>war</packaging>
 	<name>asustech</name>
 	<description>Demo project for Spring Boot</description>
 
@@ -63,7 +64,7 @@
 			<artifactId>lombok</artifactId>
 			<optional>true</optional>
 		</dependency>
- 		<dependency>
+		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-security</artifactId>
 		</dependency>

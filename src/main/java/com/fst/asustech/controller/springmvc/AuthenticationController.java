@@ -14,7 +14,7 @@ public class AuthenticationController {
 
 	@GetMapping("/login")
 	public String login() {
-		return "/authentication/login.xhtml";
+		return "authentication/login.xhtml";
 	}
 	
 	@GetMapping("/logout")
@@ -23,11 +23,11 @@ public class AuthenticationController {
 	    if (auth != null){    
 	        new SecurityContextLogoutHandler().logout(request, response, auth);
 	    }
-		return "redirect:/authentication/login.xhtml?logout";
+		return "redirect:authentication/login.xhtml?logout";
 	}
 
 	@GetMapping("/access-denied")
 	public String accessDenied() {
-		return "/error/error-403.xhtml";
+		return "error/error-403.xhtml";
 	}
 }

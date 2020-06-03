@@ -21,17 +21,17 @@ public class MyErrorController implements ErrorController {
 			Integer statusCode = Integer.valueOf(status.toString());
 
 			if (statusCode == HttpStatus.NOT_FOUND.value()) {
-				return "/error/error-404.xhtml";
+				return "error/error-404.xhtml";
 			} else if (statusCode == HttpStatus.INTERNAL_SERVER_ERROR.value()) {
-				return "/error/error-500.xhtml";
+				return "error/error-500.xhtml";
 			}
 		}
-		return "/error/error.xhtml";
+		return "error/error.xhtml";
 	}
 
 	@Override
 	public String getErrorPath() {
-		return "/error";
+		return "error";
 	}
 
 }

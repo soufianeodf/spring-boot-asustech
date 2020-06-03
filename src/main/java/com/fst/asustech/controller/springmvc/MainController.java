@@ -3,7 +3,6 @@ package com.fst.asustech.controller.springmvc;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import com.fst.asustech.entity.g.stock.ProduitsApprovisionnement;
@@ -40,11 +39,12 @@ public class MainController {
 
 	@GetMapping("/")
 	public String homePage() {
-		return "/index.xhtml";
+		return "index.xhtml";
 	}
 
 	@GetMapping("/listProduits")
 	public String listProduits() {
-		return "/pages/data-tables.xhtml";
+		return "pages/data-tables.xhtml";
 	}
+
 }
