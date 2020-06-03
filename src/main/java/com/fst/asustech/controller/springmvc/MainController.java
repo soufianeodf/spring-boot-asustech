@@ -1,9 +1,12 @@
 package com.fst.asustech.controller.springmvc;
 
+import java.io.FileNotFoundException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import com.fst.asustech.entity.g.stock.ProduitsApprovisionnement;
 import com.fst.asustech.entity.g.stock.ProduitsStock;
@@ -11,6 +14,9 @@ import com.fst.asustech.entity.g.vente.Commandes;
 import com.fst.asustech.entity.g.vente.ProduitsPrix;
 import com.fst.asustech.entity.g.vente.Users;
 import com.fst.asustech.service.CrudService;
+import com.fst.asustech.service.report.ReportService;
+
+import net.sf.jasperreports.engine.JRException;
 
 @Controller
 public class MainController {
@@ -36,6 +42,9 @@ public class MainController {
 	@Autowired
 	@Qualifier("produitsApprovisionnementServiceImpl")
 	private CrudService<ProduitsApprovisionnement> produitsApprovisionnementService;
+	
+	@Autowired
+	private ReportService service;
 
 	@GetMapping("/")
 	public String homePage() {
@@ -51,5 +60,11 @@ public class MainController {
 	public String formValidation() {
 		return "pages/form-validation.xhtml";
 	}
+	
+    @GetMapping("/report/{format}")
+    public String generateReport(@PathVariable String format) throws FileNotFoundException, JRException {
+    	service.exportReport(format);
+        return "redirect:../";
+    }
 
 }
