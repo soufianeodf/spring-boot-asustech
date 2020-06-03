@@ -39,12 +39,12 @@ public class MainController {
 	private CrudService<ProduitsApprovisionnement> produitsApprovisionnementService;
 
 	@GetMapping("/")
-	public String homePage(Model theModel) {
+	public String homePage() {
 		return "/index.xhtml";
 	}
 
 	@GetMapping("/listProduits")
-	public String listProduits(Model theModel) {
+	public String listProduits() {
 		return "/pages/data-tables.xhtml";
 	}
 }
