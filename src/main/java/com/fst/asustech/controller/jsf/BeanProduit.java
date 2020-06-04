@@ -104,7 +104,7 @@ public class BeanProduit {
 			return null;
 		}
 
-		return "/index";
+		return "/pages/form-validation";
 	}
 
 	private void addErrorMessage(Exception exc) {
