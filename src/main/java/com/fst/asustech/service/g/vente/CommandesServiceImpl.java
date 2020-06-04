@@ -50,7 +50,7 @@ public class CommandesServiceImpl implements CrudCommandeService {
 	}
 	
 	@Override
-	public List<Commandes> findUserCommands(String userName) {
+	public List<Object[]> findUserCommands(String userName) {
 		return commandesRepositoryImpl.findUserCommands(userName);
 	}
 
