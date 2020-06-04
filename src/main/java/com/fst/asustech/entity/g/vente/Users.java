@@ -29,5 +29,5 @@ public class Users implements Serializable {
 	private @NonNull String password;
 
 	@Column
-	private @NonNull int enabled;
+	private int enabled;
 }
