@@ -2,8 +2,10 @@ package com.fst.asustech.dao.g.vente;
 
 import java.util.List;
 
+import com.fst.asustech.entity.g.vente.Commandes;
+
 public interface CommandesRepositoryCustom {
 	
-	List<Object> findUserCommands(String userName);
+	List<Commandes> findUserCommands(String userName);
 	
 }

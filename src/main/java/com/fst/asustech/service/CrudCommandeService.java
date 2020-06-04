@@ -6,5 +6,5 @@ import com.fst.asustech.entity.g.vente.Commandes;
 
 public interface CrudCommandeService extends CrudService<Commandes> {
 
-	List<Object> findUserCommands(String userName);
+	List<Commandes> findUserCommands(String userName);
 }

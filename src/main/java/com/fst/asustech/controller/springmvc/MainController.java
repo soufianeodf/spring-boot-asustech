@@ -10,10 +10,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import com.fst.asustech.entity.g.stock.ProduitsApprovisionnement;
 import com.fst.asustech.entity.g.stock.ProduitsStock;
-import com.fst.asustech.entity.g.vente.Commandes;
 import com.fst.asustech.entity.g.vente.ProduitsPrix;
-import com.fst.asustech.entity.g.vente.Users;
 import com.fst.asustech.service.CrudService;
+import com.fst.asustech.service.g.vente.CommandesServiceImpl;
 import com.fst.asustech.service.report.InvoiceService;
 
 import net.sf.jasperreports.engine.JRException;
@@ -27,12 +26,11 @@ public class MainController {
 	private CrudService<ProduitsPrix> produitsPrixService;
 
 	@Autowired
-	@Qualifier("commandesServiceImpl")
-	private CrudService<Commandes> commandesService;
+	private CommandesServiceImpl commandesService;
 
-	@Autowired
-	@Qualifier("usersServiceImpl")
-	private CrudService<Users> usersService;
+//	@Autowired
+//	@Qualifier("usersServiceImpl")
+//	private CrudService<Users> usersService;
 
 	// stock
 	@Autowired
@@ -48,6 +46,9 @@ public class MainController {
 
 	@GetMapping("/")
 	public String homePage() {
+		commandesService.findUserCommands("susan").forEach(command -> {
+			System.out.println(command);
+		});;
 		return "index.xhtml";
 	}
 
