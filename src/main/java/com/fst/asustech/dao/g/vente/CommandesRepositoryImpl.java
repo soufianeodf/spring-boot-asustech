@@ -16,7 +16,7 @@ public class CommandesRepositoryImpl implements CommandesRepositoryCustom {
 
 	@Autowired
 	@Qualifier("venteEntityManagerFactory")
-	private EntityManager entityManager;;
+	private EntityManager entityManager;
 
 	@Override
 	public List<Object> findUserCommands(String userName) {
