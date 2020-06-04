@@ -25,8 +25,8 @@ public class AsustechApplication implements CommandLineRunner{
 	}
 	
 	@Bean
-	public ServletRegistrationBean facesServletRegistration() {
-		ServletRegistrationBean registration = new ServletRegistrationBean<>(new FacesServlet(), "*.xhtml");
+	public ServletRegistrationBean<FacesServlet> facesServletRegistration() {
+		ServletRegistrationBean<FacesServlet> registration = new ServletRegistrationBean<>(new FacesServlet(), "*.xhtml");
 		registration.setLoadOnStartup(1);
 		return registration;
 	}
