@@ -164,10 +164,8 @@
     <columnHeader>
         <band height="25">
             <staticText>
-                <reportElement style="Column header" x="0" y="5" width="111" height="20" forecolor="#000000"
-                               uuid="c42b5739-8f0e-4957-b10d-62670ff20ba9">
-                    <property name="com.jaspersoft.studio.spreadsheet.connectionID"
-                              value="36c65d69-69c2-4aae-9eb7-318741264895"/>
+                <reportElement style="Column header" x="0" y="5" width="111" height="20" forecolor="#000000" uuid="c42b5739-8f0e-4957-b10d-62670ff20ba9">
+                    <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="36c65d69-69c2-4aae-9eb7-318741264895"/>
                     <property name="com.jaspersoft.studio.unit.y" value="px"/>
                 </reportElement>
                 <textElement>
@@ -176,22 +174,18 @@
                 <text><![CDATA[ID COMMANDE]]></text>
             </staticText>
             <staticText>
-                <reportElement style="Column header" x="111" y="5" width="111" height="20" forecolor="#000000"
-                               uuid="842a6a33-8d39-498b-91af-91d3db3cc050">
-                    <property name="com.jaspersoft.studio.spreadsheet.connectionID"
-                              value="863a1ad6-236e-462c-8dff-20f509daae08"/>
+                <reportElement style="Column header" x="111" y="5" width="111" height="20" forecolor="#000000" uuid="842a6a33-8d39-498b-91af-91d3db3cc050">
+                    <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="863a1ad6-236e-462c-8dff-20f509daae08"/>
                     <property name="com.jaspersoft.studio.unit.y" value="px"/>
                 </reportElement>
                 <textElement>
                     <font fontName="Arial" size="12" isBold="true"/>
                 </textElement>
-                <text><![CDATA[CLIENT]]></text>
+                <text><![CDATA[ID CLIENT]]></text>
             </staticText>
             <staticText>
-                <reportElement style="Column header" x="222" y="5" width="58" height="20" forecolor="#000000"
-                               uuid="33e1262c-0874-4113-aacd-b33a170158e8">
-                    <property name="com.jaspersoft.studio.spreadsheet.connectionID"
-                              value="2293ecdb-07b3-4ea4-8854-4905415f231e"/>
+                <reportElement style="Column header" x="222" y="5" width="74" height="20" forecolor="#000000" uuid="33e1262c-0874-4113-aacd-b33a170158e8">
+                    <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="2293ecdb-07b3-4ea4-8854-4905415f231e"/>
                     <property name="com.jaspersoft.studio.unit.y" value="px"/>
                 </reportElement>
                 <textElement>
@@ -200,10 +194,8 @@
                 <text><![CDATA[ID PRODUIT]]></text>
             </staticText>
             <staticText>
-                <reportElement style="Column header" x="281" y="5" width="79" height="20" forecolor="#000000"
-                               uuid="9ddcc9b2-f1d7-40d9-9808-82894256dc23">
-                    <property name="com.jaspersoft.studio.spreadsheet.connectionID"
-                              value="d4d606bf-4874-40c4-9606-7c08112715bd"/>
+                <reportElement style="Column header" x="296" y="5" width="79" height="20" forecolor="#000000" uuid="9ddcc9b2-f1d7-40d9-9808-82894256dc23">
+                    <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="d4d606bf-4874-40c4-9606-7c08112715bd"/>
                     <property name="com.jaspersoft.studio.unit.y" value="px"/>
                 </reportElement>
                 <textElement>
@@ -212,10 +204,8 @@
                 <text><![CDATA[QUANTITE]]></text>
             </staticText>
             <staticText>
-                <reportElement style="Column header" x="361" y="5" width="91" height="20" forecolor="#000000"
-                               uuid="84eacd8e-3483-410f-8868-ae451210622c">
-                    <property name="com.jaspersoft.studio.spreadsheet.connectionID"
-                              value="90fc9653-c94d-4303-8185-6bcdb169df90"/>
+                <reportElement style="Column header" x="376" y="5" width="91" height="20" forecolor="#000000" uuid="84eacd8e-3483-410f-8868-ae451210622c">
+                    <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="90fc9653-c94d-4303-8185-6bcdb169df90"/>
                     <property name="com.jaspersoft.studio.unit.y" value="px"/>
                 </reportElement>
                 <textElement>
@@ -224,10 +214,8 @@
                 <text><![CDATA[DATE COMMANDE]]></text>
             </staticText>
             <staticText>
-                <reportElement style="Column header" x="452" y="5" width="91" height="20" forecolor="#000000"
-                               uuid="2a7a3e09-1370-4c08-acd5-73736ba11051">
-                    <property name="com.jaspersoft.studio.spreadsheet.connectionID"
-                              value="2293ecdb-07b3-4ea4-8854-4905415f231e"/>
+                <reportElement style="Column header" x="468" y="5" width="85" height="20" forecolor="#000000" uuid="2a7a3e09-1370-4c08-acd5-73736ba11051">
+                    <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="2293ecdb-07b3-4ea4-8854-4905415f231e"/>
                     <property name="com.jaspersoft.studio.unit.y" value="px"/>
                 </reportElement>
                 <textElement>
@@ -240,10 +228,8 @@
     <detail>
         <band height="25">
             <textField isBlankWhenNull="true">
-                <reportElement style="Detail" x="0" y="0" width="111" height="20"
-                               uuid="dfa06418-f7a3-4164-8e13-2faa528ad75c">
-                    <property name="com.jaspersoft.studio.spreadsheet.connectionID"
-                              value="36c65d69-69c2-4aae-9eb7-318741264895"/>
+                <reportElement style="Detail" x="0" y="0" width="111" height="20" uuid="dfa06418-f7a3-4164-8e13-2faa528ad75c">
+                    <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="36c65d69-69c2-4aae-9eb7-318741264895"/>
                     <property name="com.jaspersoft.studio.unit.y" value="px"/>
                 </reportElement>
                 <textElement>
@@ -252,22 +238,18 @@
                 <textFieldExpression><![CDATA[$F{codeCmd}]]></textFieldExpression>
             </textField>
             <textField isBlankWhenNull="true">
-                <reportElement style="Detail" x="111" y="0" width="111" height="20"
-                               uuid="f99f8134-8494-457e-b62e-2c64a8396cca">
-                    <property name="com.jaspersoft.studio.spreadsheet.connectionID"
-                              value="863a1ad6-236e-462c-8dff-20f509daae08"/>
+                <reportElement style="Detail" x="111" y="0" width="111" height="20" uuid="f99f8134-8494-457e-b62e-2c64a8396cca">
+                    <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="863a1ad6-236e-462c-8dff-20f509daae08"/>
                     <property name="com.jaspersoft.studio.unit.y" value="px"/>
                 </reportElement>
                 <textElement>
                     <font fontName="Arial" size="12" isBold="false"/>
                 </textElement>
-                <textFieldExpression><![CDATA[$F{client}]]></textFieldExpression>
+                <textFieldExpression><![CDATA[$F{codeCmd}]]></textFieldExpression>
             </textField>
             <textField isBlankWhenNull="true">
-                <reportElement style="Detail" x="222" y="0" width="58" height="20"
-                               uuid="68514735-b909-43a9-bb37-93d560e7c920">
-                    <property name="com.jaspersoft.studio.spreadsheet.connectionID"
-                              value="2293ecdb-07b3-4ea4-8854-4905415f231e"/>
+                <reportElement style="Detail" x="222" y="0" width="74" height="20" uuid="68514735-b909-43a9-bb37-93d560e7c920">
+                    <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="2293ecdb-07b3-4ea4-8854-4905415f231e"/>
                     <property name="com.jaspersoft.studio.unit.y" value="px"/>
                 </reportElement>
                 <textElement>
@@ -276,10 +258,8 @@
                 <textFieldExpression><![CDATA[$F{codePdt}]]></textFieldExpression>
             </textField>
             <textField isBlankWhenNull="true">
-                <reportElement style="Detail" x="361" y="0" width="91" height="20"
-                               uuid="fa8e255d-ba72-4131-b597-0cfe9e199b0e">
-                    <property name="com.jaspersoft.studio.spreadsheet.connectionID"
-                              value="90fc9653-c94d-4303-8185-6bcdb169df90"/>
+                <reportElement style="Detail" x="376" y="0" width="91" height="20" uuid="fa8e255d-ba72-4131-b597-0cfe9e199b0e">
+                    <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="90fc9653-c94d-4303-8185-6bcdb169df90"/>
                     <property name="com.jaspersoft.studio.unit.y" value="px"/>
                 </reportElement>
                 <textElement>
@@ -288,10 +268,8 @@
                 <textFieldExpression><![CDATA[$F{dateCmd}]]></textFieldExpression>
             </textField>
             <textField isBlankWhenNull="true">
-                <reportElement style="Detail" x="281" y="0" width="79" height="20"
-                               uuid="35846c9f-f1a8-4106-9522-992caead7a69">
-                    <property name="com.jaspersoft.studio.spreadsheet.connectionID"
-                              value="2293ecdb-07b3-4ea4-8854-4905415f231e"/>
+                <reportElement style="Detail" x="296" y="0" width="79" height="20" uuid="35846c9f-f1a8-4106-9522-992caead7a69">
+                    <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="2293ecdb-07b3-4ea4-8854-4905415f231e"/>
                     <property name="com.jaspersoft.studio.unit.y" value="px"/>
                 </reportElement>
                 <textElement>
@@ -300,16 +278,14 @@
                 <textFieldExpression><![CDATA[$F{qteCmd}]]></textFieldExpression>
             </textField>
             <textField isBlankWhenNull="true">
-                <reportElement style="Detail" x="450" y="0" width="93" height="20"
-                               uuid="415802ea-e254-4ff6-8543-c8fa23402b46">
-                    <property name="com.jaspersoft.studio.spreadsheet.connectionID"
-                              value="2293ecdb-07b3-4ea4-8854-4905415f231e"/>
+                <reportElement style="Detail" x="468" y="0" width="85" height="20" uuid="415802ea-e254-4ff6-8543-c8fa23402b46">
+                    <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="2293ecdb-07b3-4ea4-8854-4905415f231e"/>
                     <property name="com.jaspersoft.studio.unit.y" value="px"/>
                 </reportElement>
                 <textElement>
                     <font fontName="Arial" size="12" isBold="false"/>
                 </textElement>
-                <textFieldExpression><![CDATA[$F{codeCmd}]]></textFieldExpression>
+                <textFieldExpression><![CDATA[$F{qteCmd}]]></textFieldExpression>
             </textField>
         </band>
     </detail>

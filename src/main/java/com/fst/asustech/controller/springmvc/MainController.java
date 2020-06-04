@@ -14,7 +14,7 @@ import com.fst.asustech.entity.g.vente.Commandes;
 import com.fst.asustech.entity.g.vente.ProduitsPrix;
 import com.fst.asustech.entity.g.vente.Users;
 import com.fst.asustech.service.CrudService;
-import com.fst.asustech.service.report.ReportService;
+import com.fst.asustech.service.report.InvoiceService;
 
 import net.sf.jasperreports.engine.JRException;
 
@@ -44,7 +44,7 @@ public class MainController {
 	private CrudService<ProduitsApprovisionnement> produitsApprovisionnementService;
 	
 	@Autowired
-	private ReportService service;
+	private InvoiceService service;
 
 	@GetMapping("/")
 	public String homePage() {

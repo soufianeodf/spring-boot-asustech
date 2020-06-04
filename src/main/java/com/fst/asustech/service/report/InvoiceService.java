@@ -23,7 +23,7 @@ import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 
 @Service
-public class ReportService {
+public class InvoiceService {
 
 	@Autowired
 	@Qualifier("commandesRepository")
@@ -31,19 +31,19 @@ public class ReportService {
 
 	public void exportReport(String reportFormat) throws FileNotFoundException, JRException {
 		String path = "C:\\Users\\soufiane\\Desktop\\workspace\\workspace_javaEE\\asustech\\src\\main\\resources";
-		List<Commandes> employees = repository.findAll();
+		List<Commandes> commande = repository.findAll();
 		// load file and compile it
-		File file = ResourceUtils.getFile("classpath:employees.jrxml");
+		File file = ResourceUtils.getFile("classpath:invoice.jrxml");
 		JasperReport jasperReport = JasperCompileManager.compileReport(file.getAbsolutePath());
-		JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(employees);
+		JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(commande);
 		Map<String, Object> parameters = new HashMap<>();
-		parameters.put("createdBy", "Java Techie");
+		parameters.put("createdBy", "Faculté des sciences tétouan");
 		JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, dataSource);
-		if (reportFormat.equalsIgnoreCase("html")) {
-			JasperExportManager.exportReportToHtmlFile(jasperPrint, path + "\\employees.html");
-		}
+//		if (reportFormat.equalsIgnoreCase("html")) {
+//			JasperExportManager.exportReportToHtmlFile(jasperPrint, path + "\\employees.html");
+//		}
 		if (reportFormat.equalsIgnoreCase("pdf")) {
-			JasperExportManager.exportReportToPdfFile(jasperPrint, path + "\\employees.pdf");
+			JasperExportManager.exportReportToPdfFile(jasperPrint, path + "\\facture.pdf");
 		}
 
 	}
