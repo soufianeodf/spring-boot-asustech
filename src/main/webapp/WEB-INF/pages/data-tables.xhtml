@@ -123,17 +123,23 @@
 												<th>Product Name</th>
 												<th>Product Price</th>
 												<th>Quantity</th>
+												<th>Action</th>
 											</tr>
 										</thead>
 										<tbody>
-											<ui:repeat value="#{beanProduit.produits}" var="produit">
-												<tr>
-													<td>#{produit.codePdt}</td>
-													<td>#{produit.nomPdt}</td>
-													<td>#{produit.prixPdt}</td>
-													<td>#{produit.qtePdt}</td>
-												</tr>
-											</ui:repeat>
+											<h:form>
+												<ui:repeat value="#{beanProduit.produits}" var="produit">
+													<tr>
+														<td>#{produit.codePdt}</td>
+														<td>#{produit.nomPdt}</td>
+														<td>#{produit.prixPdt}</td>
+														<td>#{produit.qtePdt}</td>
+														<td>
+															<h:commandButton value="Submit" action="#{beanProduit.loadProduct(produit.codePdt)}"></h:commandButton>
+														</td>
+													</tr>
+												</ui:repeat>
+											</h:form>
 										</tbody>
 										<tfoot>
 											<tr>
@@ -141,6 +147,7 @@
 												<th>Product Name</th>
 												<th>Product Price</th>
 												<th>Quantity</th>
+												<th>Action</th>
 											</tr>
 										</tfoot>
 									</table>
