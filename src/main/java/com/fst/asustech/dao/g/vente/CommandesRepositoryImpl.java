@@ -12,9 +12,6 @@ import org.springframework.beans.factory.annotation.Qualifier;
 public class CommandesRepositoryImpl implements CommandesRepositoryCustom {
 
 	@Autowired
-	CommandesRepository CommandesRepository;
-
-	@Autowired
 	@Qualifier("venteEntityManagerFactory")
 	private EntityManager entityManager;
 

@@ -8,15 +8,19 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import com.fst.asustech.dao.g.vente.CommandesRepository;
+import com.fst.asustech.dao.g.vente.CommandesRepositoryImpl;
 import com.fst.asustech.entity.g.vente.Commandes;
-import com.fst.asustech.service.CrudService;
+import com.fst.asustech.service.CrudCommandeService;
 
 @Service
-public class CommandesServiceImpl implements CrudService<Commandes> {
+public class CommandesServiceImpl implements CrudCommandeService {
 
 	@Autowired
 	@Qualifier("commandesRepository")
 	private CommandesRepository commandesRepository;
+	
+	@Autowired
+	CommandesRepositoryImpl commandesRepositoryImpl;
 
 	@Override
 	public List<Commandes> findAll() {
@@ -43,6 +47,11 @@ public class CommandesServiceImpl implements CrudService<Commandes> {
 	@Override
 	public void deleteById(Integer id) {
 		commandesRepository.deleteById(id);
+	}
+	
+	@Override
+	public List<Object> findUserCommands(String userName) {
+		return commandesRepositoryImpl.findUserCommands(userName);
 	}
 
 }
