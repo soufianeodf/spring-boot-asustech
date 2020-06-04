@@ -76,6 +76,13 @@ public class BeanProduit {
 	public String loadProduct(int codePdt) {
 
 		logger.info("loading student: " + codePdt);
+		System.out.println("Test");
+		System.out.println("Test");
+		System.out.println("Test");
+		System.out.println("Test");
+		System.out.println("Test");
+		System.out.println("Test");
+		System.out.println("Test");
 
 		try {
 			// get product from database
@@ -97,7 +104,7 @@ public class BeanProduit {
 			return null;
 		}
 
-		return "index";
+		return "/index";
 	}
 
 	private void addErrorMessage(Exception exc) {
