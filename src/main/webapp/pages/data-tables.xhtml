@@ -134,8 +134,8 @@
 														<td>#{produit.nomPdt}</td>
 														<td>#{produit.prixPdt}</td>
 														<td>#{produit.qtePdt}</td>
-														<td>
-															<h:commandLink value="Submit" action="#{beanProduit.loadProduct(produit.codePdt)}" />
+														<td class="text-center">
+															<h:commandButton class="btn btn-primary" value="Acheter" action="#{beanProduit.loadProduct(produit.codePdt)}" />
 														</td>
 													</tr>
 												</ui:repeat>
