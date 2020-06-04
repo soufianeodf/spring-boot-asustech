@@ -1,5 +1,6 @@
 package com.fst.asustech.controller.jsf;
 
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -12,6 +13,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
+import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -20,6 +22,9 @@ import org.springframework.stereotype.Component;
 import com.fst.asustech.entity.g.stock.ProduitsStock;
 import com.fst.asustech.entity.g.vente.ProduitsPrix;
 import com.fst.asustech.service.CrudService;
+import com.fst.asustech.service.report.InvoiceService;
+
+import net.sf.jasperreports.engine.JRException;
 
 @ManagedBean
 @Component
@@ -35,6 +40,9 @@ public class BeanProduit {
 	@Autowired
 	@Qualifier("produitsStockServiceImpl")
 	private CrudService<ProduitsStock> produitsStockService;
+	
+	@Autowired
+	private InvoiceService service;
 
 	private List<ProduitsStock> produits;
 	private Logger logger = Logger.getLogger(getClass().getName());
@@ -76,13 +84,6 @@ public class BeanProduit {
 	public String loadProduct(int codePdt) {
 
 		logger.info("loading student: " + codePdt);
-		System.out.println("Test");
-		System.out.println("Test");
-		System.out.println("Test");
-		System.out.println("Test");
-		System.out.println("Test");
-		System.out.println("Test");
-		System.out.println("Test");
 
 		try {
 			// get product from database
@@ -105,6 +106,14 @@ public class BeanProduit {
 		}
 
 		return "/pages/form-validation";
+	}
+	
+	@Transactional
+	public String loadPdfAndRedirect() throws FileNotFoundException, JRException {
+		
+		service.exportReport("pdf");
+		
+		return "/pages/invoice";
 	}
 
 	private void addErrorMessage(Exception exc) {
