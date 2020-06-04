@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.fst.asustech.entity.g.vente.Commandes;
 
 @Repository
-public interface CommandesRepository extends JpaRepository<Commandes, Integer> {
+public interface CommandesRepository extends JpaRepository<Commandes, Integer>, CommandesRepositoryCustom {
 
 }
