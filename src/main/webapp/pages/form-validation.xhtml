@@ -2,7 +2,13 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+	<f:metadata>
+		<f:event type="preRenderView" listener="#{beanProduit.loadProduct}" />
+	</f:metadata>
+
 
 <h:body>
 
@@ -62,13 +68,13 @@
 							<h5 class="card-header">Bootstrap Validation Form</h5>
 
 							<div class="card-body">
-								<h:form class="needs-validation" novalidate="">
+								<form class="needs-validation" novalidate="">
 
 									<div class="row">
 
 										<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 ">
 											<label for="validationCustom01">Nom Produit</label> 
-											<h:inputText type="text" class="form-control" id="validationCustom01" placeholder="First name" value="#{product.nomPdt}" required="" disabled="true"/>
+											<input type="text" class="form-control" id="validationCustom01" value="#{product.nomPdt}" required="" disabled="true"/>
 											<div class="valid-feedback">Looks good!</div>
 										</div>
 
@@ -148,10 +154,10 @@
 										</div>
 
 										<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 ">
-											<h:commandButton class="btn btn-primary" type="submit" action="#{beanProduit.loadPdfAndRedirect()}" value="Submit form" />
+											<a class="btn btn-primary" href="/pages/invoice.xhtml">Submit form</a>
 										</div>
 									</div>
-								</h:form>
+								</form>
 							</div>
 						</div>
 					</div>

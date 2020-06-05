@@ -1,7 +1,6 @@
 package com.fst.asustech.controller.jsf;
 
 import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -81,13 +80,13 @@ public class BeanProduit {
 
 	public void loadProduct() {
 		logger.info("loading student: ");
-		
-        FacesContext context = FacesContext.getCurrentInstance();
-        Map<String, String> paramMap = context.getExternalContext().getRequestParameterMap();
-        String mycodePdt = paramMap.get("codePdt");
-        int codePdt = Integer.valueOf(mycodePdt);
-		
-		try {	
+
+		FacesContext context = FacesContext.getCurrentInstance();
+		Map<String, String> paramMap = context.getExternalContext().getRequestParameterMap();
+		String mycodePdt = paramMap.get("codePdt");
+		int codePdt = Integer.valueOf(mycodePdt);
+
+		try {
 			// get product from database
 			ProduitsPrix product = produitsPrixService.findById(codePdt);
 			// put in the request attribute ... so we can use it on the form page
