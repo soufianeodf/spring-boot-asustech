@@ -10,6 +10,7 @@ import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
@@ -44,7 +45,11 @@ public class BeanProduit {
 	@Autowired
 	private InvoiceService service;
 
+	@ManagedProperty(value = "#{param.codePdt}")
+	String codePdt;
+
 	private List<ProduitsStock> produits;
+
 	private Logger logger = Logger.getLogger(getClass().getName());
 
 	public BeanProduit() {
@@ -54,6 +59,14 @@ public class BeanProduit {
 	@PostConstruct
 	public void init() {
 		produits = getListProductsFinal();
+	}
+
+	public String getCodePdt() {
+		return codePdt;
+	}
+
+	public void setCodePdt(String codePdt) {
+		this.codePdt = codePdt;
 	}
 
 	public List<ProduitsStock> getProduits() {
@@ -78,13 +91,8 @@ public class BeanProduit {
 		return produits;
 	}
 
-	public void loadProduct() {
+	public String loadProduct(int codePdt) {
 		logger.info("loading student: ");
-
-		FacesContext context = FacesContext.getCurrentInstance();
-		Map<String, String> paramMap = context.getExternalContext().getRequestParameterMap();
-		String mycodePdt = paramMap.get("codePdt");
-		int codePdt = Integer.valueOf(mycodePdt);
 
 		try {
 			// get product from database
@@ -98,12 +106,17 @@ public class BeanProduit {
 			logger.log(Level.SEVERE, "Error loading product id:" + codePdt, exc);
 			// add error message for JSF page
 			addErrorMessage(exc);
+
+			return null;
 		}
+
+		return "/pages/form-validation";
 	}
 
 	@Transactional
-	public void loadPdf() throws FileNotFoundException, JRException {
+	public String loadPdfAndRedirect() throws FileNotFoundException, JRException {
 		service.exportReport("pdf");
+		return "/pages/invoice";
 	}
 
 	private void addErrorMessage(Exception exc) {

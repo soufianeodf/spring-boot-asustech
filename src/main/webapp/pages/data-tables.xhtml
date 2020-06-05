@@ -113,7 +113,8 @@
 							<div class="card-body">
 
 								<div class="table-responsive">
-
+									<h:form>
+										<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 									<table id="example"
 										class="table table-striped table-bordered second"
 										style="width: 100%;">
@@ -134,7 +135,7 @@
 														<td>#{produit.prixPdt}</td>
 														<td>#{produit.qtePdt}</td>
 														<td class="text-center">
-															<a class="btn btn-primary" href="/pages/form-validation.xhtml?codePdt=#{produit.codePdt}">Acheter</a>
+															<h:commandButton class="btn btn-primary" value="Acheter" action="#{beanProduit.loadProduct(produit.codePdt)}" />
 														</td>
 													</tr>
 												</ui:repeat>
@@ -149,6 +150,7 @@
 												</tr>
 											</tfoot>
 										</table>
+										</h:form>
 								</div>
 							</div>
 						</div>
