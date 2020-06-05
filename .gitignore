@@ -33,3 +33,4 @@ build/
 ### jasper report pdf ###
 src/main/resources/facture.pdf
 .metadata
+*.pdf
