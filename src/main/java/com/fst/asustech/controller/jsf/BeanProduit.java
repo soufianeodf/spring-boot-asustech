@@ -102,14 +102,8 @@ public class BeanProduit {
 	}
 
 	@Transactional
-	public String loadPdfAndRedirect() throws FileNotFoundException, JRException {
+	public void loadPdf() throws FileNotFoundException, JRException {
 		service.exportReport("pdf");
-		return "/pages/invoice";
-	}
-
-	public void download() throws IOException {
-		ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
-		externalContext.redirect("/facture.pdf");
 	}
 
 	private void addErrorMessage(Exception exc) {

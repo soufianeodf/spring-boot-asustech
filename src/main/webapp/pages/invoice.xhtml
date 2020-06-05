@@ -6,6 +6,10 @@
 		xmlns:p="http://primefaces.org/ui"
         xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
         
+    <f:metadata>
+        <f:event type="preRenderView" listener="#{beanProduit.loadPdf}" />
+    </f:metadata>
+
 <h:body>
 
 	<ui:composition template="../WEB-INF/templates/common.xhtml">
@@ -36,9 +40,7 @@
                     <!-- end pageheader  -->
                     <!-- ============================================================== -->
                     
-                    <h:form>
-                        <h:commandLink class="btn btn-primary" type="submit" action="#{beanProduit.download}" value="Télécharger PDF" />
-                    </h:form>
+                    <a class="btn btn-primary" href="/facture.pdf">Télécharger PDF</a>
 
                     <div class="row">
                         <div class="offset-xl-2 col-xl-8 col-lg-12 col-md-12 col-sm-12 col-12">
