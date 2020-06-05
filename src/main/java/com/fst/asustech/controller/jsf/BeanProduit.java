@@ -9,7 +9,6 @@ import java.util.logging.Logger;
 
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
-import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.ExternalContext;
@@ -18,16 +17,17 @@ import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Component;
 
 import com.fst.asustech.entity.g.stock.ProduitsStock;
 import com.fst.asustech.entity.g.vente.ProduitsPrix;
+import com.fst.asustech.security.config.IAuthenticationFacade;
 import com.fst.asustech.service.CrudService;
 import com.fst.asustech.service.report.InvoiceService;
 
 import net.sf.jasperreports.engine.JRException;
 
-@ManagedBean
 @Component
 @SessionScoped
 public class BeanProduit {
@@ -44,6 +44,9 @@ public class BeanProduit {
 
 	@Autowired
 	private InvoiceService service;
+
+	@Autowired
+	private IAuthenticationFacade authenticationFacade;
 
 	@ManagedProperty(value = "#{param.codePdt}")
 	String codePdt;
@@ -115,8 +118,13 @@ public class BeanProduit {
 
 	@Transactional
 	public String loadPdfAndRedirect() throws FileNotFoundException, JRException {
-		service.exportReport("pdf");
+		service.exportReport("pdf", currentUserNameSimple());
 		return "/pages/invoice";
+	}
+
+	public String currentUserNameSimple() {
+		Authentication authentication = authenticationFacade.getAuthentication();
+		return authentication.getName();
 	}
 
 	private void addErrorMessage(Exception exc) {
