@@ -1,6 +1,7 @@
 package com.fst.asustech.controller.jsf;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -40,7 +41,7 @@ public class BeanProduit {
 	@Autowired
 	@Qualifier("produitsStockServiceImpl")
 	private CrudService<ProduitsStock> produitsStockService;
-	
+
 	@Autowired
 	private InvoiceService service;
 
@@ -69,51 +70,43 @@ public class BeanProduit {
 	}
 
 	public List<ProduitsStock> getListProductsFinal() {
-
 		List<ProduitsPrix> produitsVente = getListProduitsPrix();
 		List<ProduitsStock> produits = getListProduitsStock();
-
 		for (int i = 0; i < produits.size(); i++) {
 			produits.get(i).setNomPdt(produitsVente.get(i).getNomPdt());
 			produits.get(i).setPrixPdt(produitsVente.get(i).getPrixPdt());
 		}
-
 		return produits;
 	}
 
 	public String loadProduct(int codePdt) {
-
 		logger.info("loading student: " + codePdt);
-
 		try {
 			// get product from database
 			ProduitsPrix product = produitsPrixService.findById(codePdt);
-
 			// put in the request attribute ... so we can use it on the form page
 			ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
-
 			Map<String, Object> requestMap = externalContext.getRequestMap();
 			requestMap.put("product", product);
-
 		} catch (Exception exc) {
 			// send this to server logs
 			logger.log(Level.SEVERE, "Error loading product id:" + codePdt, exc);
-
 			// add error message for JSF page
 			addErrorMessage(exc);
-
 			return null;
 		}
-
 		return "/pages/form-validation";
 	}
-	
+
 	@Transactional
 	public String loadPdfAndRedirect() throws FileNotFoundException, JRException {
-		
 		service.exportReport("pdf");
-		
 		return "/pages/invoice";
+	}
+
+	public void download() throws IOException {
+		ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
+		externalContext.redirect("/facture.pdf");
 	}
 
 	private void addErrorMessage(Exception exc) {

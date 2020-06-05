@@ -29,7 +29,7 @@ public class InvoiceService {
 	private CommandesServiceImpl commandesService;
 
 	public void exportReport(String reportFormat) throws FileNotFoundException, JRException {
-		String path = "C:\\Users\\soufiane\\Desktop\\workspace\\workspace_javaEE\\asustech\\src\\main\\resources";
+		String path = "C:\\Users\\soufiane\\Desktop\\workspace\\workspace_javaEE\\asustech\\src\\main\\webapp";
 		List<CustomCommande> commandes = new ArrayList<CustomCommande>();
 		// transform the data from List<Object[]> to List<CustomCommande>
 		commandesService.findUserCommands("susan").forEach(command -> {
