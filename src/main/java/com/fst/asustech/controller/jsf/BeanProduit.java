@@ -79,9 +79,15 @@ public class BeanProduit {
 		return produits;
 	}
 
-	public String loadProduct(int codePdt) {
-		logger.info("loading student: " + codePdt);
-		try {
+	public void loadProduct() {
+		logger.info("loading student: ");
+		
+        FacesContext context = FacesContext.getCurrentInstance();
+        Map<String, String> paramMap = context.getExternalContext().getRequestParameterMap();
+        String mycodePdt = paramMap.get("codePdt");
+        int codePdt = Integer.valueOf(mycodePdt);
+		
+		try {	
 			// get product from database
 			ProduitsPrix product = produitsPrixService.findById(codePdt);
 			// put in the request attribute ... so we can use it on the form page
@@ -93,9 +99,7 @@ public class BeanProduit {
 			logger.log(Level.SEVERE, "Error loading product id:" + codePdt, exc);
 			// add error message for JSF page
 			addErrorMessage(exc);
-			return null;
 		}
-		return "/pages/form-validation";
 	}
 
 	@Transactional
