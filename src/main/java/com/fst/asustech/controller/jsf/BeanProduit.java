@@ -9,7 +9,6 @@ import java.util.logging.Logger;
 
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
-import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
@@ -21,9 +20,11 @@ import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Component;
 
 import com.fst.asustech.entity.g.stock.ProduitsStock;
+import com.fst.asustech.entity.g.vente.Commandes;
 import com.fst.asustech.entity.g.vente.ProduitsPrix;
 import com.fst.asustech.security.config.IAuthenticationFacade;
 import com.fst.asustech.service.CrudService;
+import com.fst.asustech.service.g.vente.CommandesServiceImpl;
 import com.fst.asustech.service.report.InvoiceService;
 
 import net.sf.jasperreports.engine.JRException;
@@ -43,13 +44,16 @@ public class BeanProduit {
 	private CrudService<ProduitsStock> produitsStockService;
 
 	@Autowired
+	private CommandesServiceImpl commandesService;
+
+	@Autowired
 	private InvoiceService service;
 
 	@Autowired
 	private IAuthenticationFacade authenticationFacade;
 
-	@ManagedProperty(value = "#{param.codePdt}")
-	String codePdt;
+	private int codePdt;
+	private int qteCmd;
 
 	private List<ProduitsStock> produits;
 
@@ -64,11 +68,19 @@ public class BeanProduit {
 		produits = getListProductsFinal();
 	}
 
-	public String getCodePdt() {
+	public int getQteCmd() {
+		return qteCmd;
+	}
+
+	public void setQteCmd(int qteCmd) {
+		this.qteCmd = qteCmd;
+	}
+
+	public int getCodePdt() {
 		return codePdt;
 	}
 
-	public void setCodePdt(String codePdt) {
+	public void setCodePdt(int codePdt) {
 		this.codePdt = codePdt;
 	}
 
@@ -104,6 +116,8 @@ public class BeanProduit {
 			ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
 			Map<String, Object> requestMap = externalContext.getRequestMap();
 			requestMap.put("product", product);
+			// set the code pdt attribute to use it in loadPdfAndRedirect()
+			setCodePdt(product.getCodePdt());
 		} catch (Exception exc) {
 			// send this to server logs
 			logger.log(Level.SEVERE, "Error loading product id:" + codePdt, exc);
@@ -118,7 +132,16 @@ public class BeanProduit {
 
 	@Transactional
 	public String loadPdfAndRedirect() throws FileNotFoundException, JRException {
+
+		// create a commande with the product code and the quantity chosen by the
+		// current user
+		Commandes commande = new Commandes(currentUserNameSimple(), this.codePdt, this.qteCmd, new java.util.Date());
+		// save the commande
+		commandesService.save(commande);
+
+		// generate the invoice
 		service.exportReport("pdf", currentUserNameSimple());
+
 		return "/pages/invoice";
 	}
 

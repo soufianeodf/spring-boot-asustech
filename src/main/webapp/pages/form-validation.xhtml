@@ -65,7 +65,7 @@
 								<h:form class="needs-validation" novalidate="">
 
 									<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-									
+
 									<div class="row">
 
 										<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 ">
@@ -106,15 +106,14 @@
 
 
 										<div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12 mb-2">
-											<label for="validationCustom03">Quantité</label> <input
-												type="text" class="form-control" id="validationCustom03"
-												placeholder="Quantité" required="" />
+											<label for="validationCustom03">Quantité</label> 
+											<h:inputText class="form-control" id="validationCustom03" placeholder="Quantité" required="" value="#{beanProduit.qteCmd}" />
 
 											<div class="invalid-feedback">Please provide a valid
 												number.</div>
 										</div>
 
-
+										
 										<!-- <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12 mb-2">
 											<label for="validationCustom04">State</label> <input
 												type="text" class="form-control" id="validationCustom04"
@@ -150,7 +149,7 @@
 										</div>
 
 										<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 ">
-											<h:commandButton class="btn btn-primary" type="submit" action="#{beanProduit.loadPdfAndRedirect()}" value="Submit form" />
+											<h:commandButton class="btn btn-primary" type="submit" action="#{beanProduit.loadPdfAndRedirect}" value="Submit form" />
 										</div>
 									</div>
 								</h:form>
