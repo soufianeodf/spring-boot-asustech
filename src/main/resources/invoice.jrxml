@@ -57,7 +57,7 @@
 	<field name="client" class="java.lang.String"/>
 	<field name="codePdt" class="java.lang.Integer"/>
 	<field name="qteCmd" class="java.lang.Integer"/>
-	<field name="dateCmd" class="java.sql.Date"/>
+	<field name="dateCmd" class="java.util.Date"/>
 	<field name="total" class="java.lang.Integer"/>
 	<title>
 		<band height="201" splitType="Stretch">
@@ -210,7 +210,7 @@
 				<textElement>
 					<font fontName="Arial" size="12" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Total]]></text>
+				<text><![CDATA[Total DHs]]></text>
 			</staticText>
 		</band>
 	</columnHeader>
