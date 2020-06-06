@@ -138,6 +138,13 @@ public class BeanProduit {
 		Commandes commande = new Commandes(currentUserNameSimple(), this.codePdt, this.qteCmd, new java.util.Date());
 		// save the commande
 		commandesService.save(commande);
+		
+		// get the product by id from g_stock
+		ProduitsStock produitsStock = produitsStockService.findById(this.codePdt);
+		// soustracte the chosen quantity from the stock quantity
+		produitsStock.setQtePdt(produitsStock.getQtePdt() - this.qteCmd);
+		// update the quantity value
+		produitsStockService.save(produitsStock);
 
 		// generate the invoice
 		service.exportReport("pdf", currentUserNameSimple());
